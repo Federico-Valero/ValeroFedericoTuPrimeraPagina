@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de productos</title>
+</head>
+<body>
+    <nav>
+        <a href={% url "inicio" %}>Inicio</a>
+        <a href={% url "cargar_articulo" %}>Cargar producto</a>
+        <a href={% url "lista_de_productos" %}>Lista de productos</a>
+    </nav>
+    <h1>Lista de productos</h1>
+    <form action="">
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+    {% if articulos %}
+        <ul>
+            {% for articulo in articulos %}
+                <li>
+                    {{articulo}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <p>No hay ningun articulo cargado con esta descripcion.</p>
+    {% endif %}
+</body>
+</html>
