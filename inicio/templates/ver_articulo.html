@@ -1,0 +1,15 @@
+{% extends "template_base.html"%}
+{% load static %}
+
+{% block title %}articulo{% endblock title %}
+
+{% block contenido %}
+    <h2>Informacion de {{articulo.descripcion}}</h2>
+    <ul>
+        <li>Descripcion: {{articulo.descripcion}}</li>
+        <li>Precio: {{articulo.precio}}</li>
+        <li>Stock: {{articulo.stock}}</li>
+        <li>Fecha de creacion: {{articulo.fecha_creacion}}</li>
+        <li>Imagen: {{articulo.imagen}}</li>
+    </ul>   
+{% endblock contenido %}

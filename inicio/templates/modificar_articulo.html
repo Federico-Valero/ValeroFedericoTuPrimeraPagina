@@ -1,0 +1,14 @@
+{% extends "template_base.html"%}
+{% load static %}
+
+{% block title %}Modificar articulo{% endblock title %}
+
+
+{% block contenido %}
+    <h2>Formulario de modificaion de articulos</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Guardar cambios">
+    </form>
+{% endblock contenido %}

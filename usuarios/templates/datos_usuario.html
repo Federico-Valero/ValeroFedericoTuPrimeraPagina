@@ -1,0 +1,17 @@
+{% extends "template_base.html"%}
+{% load static %}
+
+{% block title %}Datos de usuario{% endblock title %}
+
+{% block contenido %}
+    <h2>Informacion de {{request.user.username}}</h2>
+    <ul>
+        <li>Nombre: {{request.user.first_name}}</li>
+        <li>Apellido: {{request.user.last_name}}</li>
+        <li>Email: {{request.user.email}}</li>
+        {% comment %} <li>Fecha de creacion: {{request.user.username}}</li> {% endcomment %}
+        <form action={% url "editar_perfil" %}>
+        <input type="submit" value="Editar perfil">
+        </form>
+    </ul>   
+{% endblock contenido %}

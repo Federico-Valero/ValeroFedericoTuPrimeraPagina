@@ -1,0 +1,14 @@
+{% extends "template_base.html"%}
+{% load static %}
+
+{% block title %}Eliminar articulo{% endblock title %}
+
+
+{% block contenido %}
+    <h2>Confirmacion de borrado</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>Confirma que quiere eliminar el articulo: {{producto}}</p>
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock contenido %}

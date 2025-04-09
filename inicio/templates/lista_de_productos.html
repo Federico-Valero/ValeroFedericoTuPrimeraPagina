@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de productos</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "cargar_articulo" %}>Cargar producto</a>
-        <a href={% url "lista_de_productos" %}>Lista de productos</a>
-    </nav>
-    <h1>Lista de productos</h1>
+{% extends "template_base.html"%} 
+{% load static %}
+
+{% block title %}Lista de Prouctos{% endblock title %}
+
+{% block contenido %}
+    <h2>Lista de productos</h2>
     <form action="">
         {{formulario}}
         <input type="submit" value="Buscar">
@@ -20,12 +13,44 @@
         <ul>
             {% for articulo in articulos %}
                 <li>
-                    {{articulo}}
+                     <!-- Section-->
+                    <section class="py-5">
+                        <div class="container px-4 px-lg-5 mt-5">
+                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                <div class="col mb-5">
+                                    <div class="card h-100">
+                                        <!-- Product image-->
+                                         {% comment %} {% if {{articulo.imagen}} %} {% endcomment %}
+                                         <img class="card-img-top" src={{articulo.imagen}} alt="..." />
+                                         {% comment %} {% else %} {% endcomment %}
+                                         {% comment %} <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> {% endcomment %}
+                                         {% comment %} {% endif %} {% endcomment %}
+                                        <!-- Product details-->
+                                        <div class="card-body p-4">
+                                            <div class="text-center text-black">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder">{{articulo.descripcion}}</h5>
+                                            <!-- Product price-->
+                                            {{articulo.precio}}
+                                            </div>
+                                        </div>
+                                        <!-- Product actions-->
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href={% url "eliminar_articulo" articulo.id %}>Eliminar</a></div>
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href={% url "modificar_articulo" articulo.id %}>Modificar</a></div>
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href={% url "ver_articulo" articulo.id %}>Ver mas</a></div>
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href={% url "cambio_imagen" articulo.id %}>Cambiar imagen</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
     <p>No hay ningun articulo cargado con esta descripcion.</p>
     {% endif %}
-</body>
-</html>
+{% endblock contenido %}
+
