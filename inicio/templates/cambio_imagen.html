@@ -1,11 +1,11 @@
 {% extends "template_base.html"%}
 {% load static %}
 
-{% block title %}Editar perfil{% endblock title %}
+{% block title %}Cambiar imagen{% endblock title %}
 
 
 {% block contenido %}
-    <h2>Editar perfil</h2>
+    <h2>Cambiar imagen de articulo</h2>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{formulario}}

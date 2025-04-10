@@ -9,7 +9,7 @@
         <li>Nombre: {{request.user.first_name}}</li>
         <li>Apellido: {{request.user.last_name}}</li>
         <li>Email: {{request.user.email}}</li>
-        {% comment %} <li>Fecha de creacion: {{request.user.username}}</li> {% endcomment %}
+        <li>Fecha de nacimiento: {{request.user.infoextra.fecha_nacimiento}}</li>
         <form action={% url "editar_perfil" %}>
         <input type="submit" value="Editar perfil">
         </form>

@@ -28,7 +28,7 @@ def cargar_articulo(request):
 
 def lista_de_productos(request):
     articulos= Producto.objects.all()
-    formulario= BuscarProducto(request.GET)
+    formulario= BuscarProducto(request.GET, request.FILES)
     
     if formulario.is_valid():
         articulo_a_buscar= formulario.cleaned_data.get("descripcion")
@@ -66,6 +66,11 @@ def cambio_imagen(request, articulo_id):
             producto.imagen= formulario.cleaned_data.get("imagen")
             producto.save()
             return redirect("lista_de_productos")
+    else:
+        formulario= CambioImagen(initial={"imagen":producto.imagen})
     
     return render(request,"cambio_imagen.html",{"formulario":formulario})
+
+def about(request):
     
+    return render(request,"about.html")

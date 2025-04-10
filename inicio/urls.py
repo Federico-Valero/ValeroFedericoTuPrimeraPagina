@@ -1,4 +1,4 @@
-from inicio.views import inicio, cargar_articulo, lista_de_productos, ver_articulo, ModificarArticulo, EliminarArticulo, cambio_imagen
+from inicio.views import inicio, cargar_articulo, lista_de_productos, ver_articulo, ModificarArticulo, EliminarArticulo, cambio_imagen, about
 from django.urls import path
 
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path("eliminar-articulo/<int:pk>", EliminarArticulo.as_view(), name="eliminar_articulo"),
     path("ver-articulo/<int:articulo_id>", ver_articulo, name="ver_articulo"),
     path("cambio-imagen/<int:articulo_id>", cambio_imagen, name="cambio_imagen"),
+    path("about", about, name="about"),
 ]

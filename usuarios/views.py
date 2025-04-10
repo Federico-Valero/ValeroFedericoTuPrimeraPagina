@@ -42,11 +42,13 @@ def editar_perfil(request):
         if formulario.is_valid():
             if formulario.cleaned_data.get("avatar"):
                 info_extra.avatar= formulario.cleaned_data.get("avatar")
+            if formulario.cleaned_data.get("fecha_nacimiento"):
+                info_extra.fecha_nacimiento= formulario.cleaned_data.get("fecha_nacimiento")
             info_extra.save()
             formulario.save()
             return redirect("inicio")
     else:
-        formulario= MiFormularioDeEdicion(instance= request.user, initial={"avatar":info_extra.avatar})
+        formulario= MiFormularioDeEdicion(instance= request.user, initial={"avatar":info_extra.avatar, "fecha_nacimiento":info_extra.fecha_nacimiento})
         
     return render(request, "editar_perfil.html", {"formulario":formulario})
 
